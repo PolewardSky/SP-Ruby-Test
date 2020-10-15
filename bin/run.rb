@@ -12,9 +12,8 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
 
-  system! 'ruby ./app/classes/file_parse.rb'
+  system! "ruby ./app/classes/interface.rb '#{ARGV.join(" ")}'"
 end

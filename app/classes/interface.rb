@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require './classes/promo_code.rb'
-require './classes/item.rb'
-require './classes/checkout.rb'
+require './app/classes/parse_file.rb'
 
-puts 'Please start the checkout'
+ARGV.each do |file_name|
+  ParseFile.new(file_name)
+end
 
-co = gets.chomp
-
-puts 'Please create some items'
-
-puts co
+puts "Hasta la vista"
