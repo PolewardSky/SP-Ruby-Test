@@ -8,4 +8,4 @@ ARGV.each do |file_name|
   file.order_data_by_page_views
 end
 
-puts "Hasta la vista"
+puts 'Hasta la vista'
