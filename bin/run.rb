@@ -15,5 +15,5 @@ chdir APP_ROOT do
   system! 'gem install bundler --conservative'
   system('bundle check') || system!('bundle install')
 
-  system! "ruby ./app/classes/interface.rb '#{ARGV.join(" ")}'"
+  system! "ruby ./app/classes/interface.rb '#{ARGV.join(' ')}'"
 end
