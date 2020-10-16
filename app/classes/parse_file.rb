@@ -13,7 +13,10 @@ class ParseFile
   end
 
   def order_data_by_page_views
-    @file_data.sort_by { |_x, y| y.uniq.size }.reverse.map { |x, y| "#{x} #{y.uniq.size} unique views" }
+    @file_data
+      .sort_by { |_x, y| y.uniq.size }
+      .reverse
+      .map { |x, y| "#{x} #{y.uniq.size} unique views" }
   end
 
   private
