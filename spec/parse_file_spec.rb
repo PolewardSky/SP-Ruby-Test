@@ -3,17 +3,19 @@
 require './app/classes/parse_file.rb'
 
 describe ParseFile do
+  let(:parse_file) { ParseFile.new(file_name: "app/files/webserver.log") }
 
   it 'creates object' do
-    subject { ParseFile.new }
-
     expect(subject).to have_attributes({})
   end
 
   it 'takes a file name' do 
-    subject { ParseFile.new("app/files/webserver.log") }
+    expect(parse_file.file_name).to eq("app/files/webserver.log")
+  end
 
-    expect(subject.file).not_to eq(nil)
+  it 'loads a file' do 
+    parse_file.load_file
+    expect(parse_file.file_data).to_not eq(nil)
   end
 
 end
