@@ -13,6 +13,8 @@ class ParseFile
   end
 
   def order_data_by_page_views
+    return if file_data.nil?
+
     @file_data
       .sort_by { |_x, y| y.uniq.size }
       .reverse
@@ -24,11 +26,15 @@ class ParseFile
   def parse_file
     @file_data = {}
 
-    File.foreach(File.expand_path('../../' + file_name, File.dirname(__FILE__))) do |line|
-      line_split = line.split(' ')
-      url = @file_data[(line_split[0]).to_s] ||= []
+    begin
+      File.foreach(File.expand_path('../../' + file_name, File.dirname(__FILE__))) do |line|
+        line_split = line.split(' ')
+        url = @file_data[(line_split[0]).to_s] ||= []
 
-      url.push(line_split[1])
+        url.push(line_split[1])
+      end
+    rescue StandardError => e
+      "File not processable: #{e}"
     end
   end
 end
